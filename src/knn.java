@@ -15,6 +15,7 @@ public class knn {
 	public static void main(String[] args) {
             noScanner();
             //withScanner();
+            threeClosest();
         }
         
         public static void withScanner(){
@@ -79,5 +80,45 @@ public class knn {
             System.out.println("My best guess is that the new object is a "+ data[smallestIndex].type);
         }
         	
+        
+        public static void threeClosest(){
+            System.out.println("Initializing tree and bush data.");
+            dataPoint[] data = new dataPoint[6];
+            data[0] = new dataPoint(40.0,14.0,"Tree");
+            data[1] = new dataPoint(35.0,23.0,"Tree");
+            data[2] = new dataPoint(29.0,19.0,"Tree");
+            data[3] = new dataPoint(19.0,9.0,"Bush");
+            data[4] = new dataPoint(9.0,12.0,"Bush");
+            data[5] = new dataPoint(7.0,5.0,"Bush");
+            
+            dataPoint newPoint = new dataPoint(17,20);
+            
+            double[] distances = new double[5];
+            
+            int smallestIndex = 0;
+            
+            //Add distances to array
+            for(int i = 0; i < data.length-1; i++){
+                distances[i] = data[i].distanceTo(newPoint);
+            }
+            
+            //Bubble sort through distance array
+            for(int j = 0; j < distances.length-1; j++){
+                for(int k = 0; k < distances.length-1; k++){
+                    if(distances[k] > distances[k+1]){
+                        double temp = distances[k];
+                        distances[k] = distances[k+1];
+                        distances[k + 1] = temp;
+                    }
+                }
+            }
+            
+            //int numTree = 0;
+            //for(int i = 0; i < 3; i++){
+            //    if(distances[i])
+            //}
+                        
+            //System.out.println("My best guess is that the new object is a "+ data[smallestIndex].type);
+        }
 	
 }
