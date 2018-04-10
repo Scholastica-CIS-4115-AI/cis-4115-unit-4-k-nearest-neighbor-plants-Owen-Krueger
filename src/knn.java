@@ -93,32 +93,33 @@ public class knn {
             
             dataPoint newPoint = new dataPoint(17,20);
             
-            double[] distances = new double[5];
-            
-            int smallestIndex = 0;
-            
-            //Add distances to array
-            for(int i = 0; i < data.length-1; i++){
-                distances[i] = data[i].distanceTo(newPoint);
-            }
-            
-            //Bubble sort through distance array
-            for(int j = 0; j < distances.length-1; j++){
-                for(int k = 0; k < distances.length-1; k++){
-                    if(distances[k] > distances[k+1]){
-                        double temp = distances[k];
-                        distances[k] = distances[k+1];
-                        distances[k + 1] = temp;
+            //Bubble sort through data array
+            for(int j = 0; j < data.length-1; j++){
+                for(int k = 0; k < data.length-1; k++){
+                    if(data[k].distanceTo(newPoint) > data[k+1].distanceTo(newPoint)){
+                        dataPoint temp = data[k];
+                        data[k] = data[k+1];
+                        data[k + 1] = temp;
                     }
                 }
             }
             
-            //int numTree = 0;
-            //for(int i = 0; i < 3; i++){
-            //    if(distances[i])
-            //}
-                        
-            //System.out.println("My best guess is that the new object is a "+ data[smallestIndex].type);
+            int numTree = 0;
+            String type;
+            for(int i = 0; i < 3; i++){
+                if(data[i].type.equalsIgnoreCase("tree")){
+                    numTree++;
+                }
+            }
+            
+            if(numTree >=2){
+                type = "Tree";
+            }
+            else {
+                type = "Bush";
+            }
+            
+            System.out.println("My best guess is that the new object is a "+ type);
         }
 	
 }
