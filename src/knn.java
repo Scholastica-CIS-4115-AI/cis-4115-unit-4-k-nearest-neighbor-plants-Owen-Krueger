@@ -65,18 +65,18 @@ public class knn {
             
             dataPoint newPoint = new dataPoint(17,20);
             
-            int smallestNum = 0;
+            int smallestIndex = 0;
             
-            double min = data[0].distanceTo(newPoint);
+            double minDistance = data[0].distanceTo(newPoint);
             for(int i = 0; i < data.length; i++){
-                if(data[i].distanceTo(newPoint) < min){
-                    smallestNum = i;
-                    min = data[i].distanceTo(newPoint);
+                if(data[i].distanceTo(newPoint) < minDistance){
+                    smallestIndex = i;
+                    minDistance = data[i].distanceTo(newPoint);
                 }
                 System.out.println("Distance to point " + i + " is " + data[i].distanceTo(newPoint));
             }
             
-            System.out.println("My best guess is that the new object is a "+ data[smallestNum].type);
+            System.out.println("My best guess is that the new object is a "+ data[smallestIndex].type);
         }
         	
 	
